@@ -21,22 +21,7 @@ object Anagrams {
    *  in the list.
    */
   type Occurrences = List[(Char, Int)]
-  /** The `dictionaryByOccurrences` is a `Map` from different occurrences to a sequence of all
-   *  the words that have that occurrence count.
-   *  This map serves as an easy way to obtain all the anagrams of a word given its occurrence list.
-   *
-   *  For example, the word "eat" has the following character occurrence list:
-   *
-   *     `List(('a', 1), ('e', 1), ('t', 1))`
-   *
-   *  Incidentally, so do the words "ate" and "tea".
-   *
-   *  This means that the `dictionaryByOccurrences` map will contain an entry:
-   *
-   *    List(('a', 1), ('e', 1), ('t', 1)) -> Seq("ate", "eat", "tea")
-   *
-   */
-  lazy val dictionaryByOccurrences: Map[Occurrences, List[Word]] = ???
+
   /** The dictionary is simply a sequence of words.
     * It is predefined and obtained as a sequence using the utility method `loadDictionary`.
     */
@@ -53,6 +38,23 @@ object Anagrams {
 
   /** Converts a sentence into its character occurrence list. */
   def sentenceOccurrences(s: Sentence): Occurrences = ???
+
+  /** The `dictionaryByOccurrences` is a `Map` from different occurrences to a sequence of all
+    * the words that have that occurrence count.
+    * This map serves as an easy way to obtain all the anagrams of a word given its occurrence list.
+    *
+    * For example, the word "eat" has the following character occurrence list:
+    *
+    * `List(('a', 1), ('e', 1), ('t', 1))`
+    *
+    * Incidentally, so do the words "ate" and "tea".
+    *
+    * This means that the `dictionaryByOccurrences` map will contain an entry:
+    *
+    * List(('a', 1), ('e', 1), ('t', 1)) -> Seq("ate", "eat", "tea")
+    *
+    */
+  lazy val dictionaryByOccurrences: Map[Occurrences, List[Word]] = ???
 
   /** Returns all the anagrams of a given word. */
   def wordAnagrams(word: Word): List[Word] = ???
