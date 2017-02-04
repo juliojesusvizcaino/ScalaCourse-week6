@@ -21,24 +21,6 @@ object Anagrams {
    *  in the list.
    */
   type Occurrences = List[(Char, Int)]
-
-  /** The dictionary is simply a sequence of words.
-   *  It is predefined and obtained as a sequence using the utility method `loadDictionary`.
-   */
-  val dictionary: List[Word] = loadDictionary
-
-  /** Converts the word into its character occurrence list.
-   *
-   *  Note: the uppercase and lowercase version of the character are treated as the
-   *  same character, and are represented as a lowercase character in the occurrence list.
-   *
-   *  Note: you must use `groupBy` to implement this method!
-   */
-  def wordOccurrences(w: Word): Occurrences = ???
-
-  /** Converts a sentence into its character occurrence list. */
-  def sentenceOccurrences(s: Sentence): Occurrences = ???
-
   /** The `dictionaryByOccurrences` is a `Map` from different occurrences to a sequence of all
    *  the words that have that occurrence count.
    *  This map serves as an easy way to obtain all the anagrams of a word given its occurrence list.
@@ -55,6 +37,22 @@ object Anagrams {
    *
    */
   lazy val dictionaryByOccurrences: Map[Occurrences, List[Word]] = ???
+  /** The dictionary is simply a sequence of words.
+    * It is predefined and obtained as a sequence using the utility method `loadDictionary`.
+    */
+  val dictionary: List[Word] = loadDictionary
+
+  /** Converts the word into its character occurrence list.
+    *
+    * Note: the uppercase and lowercase version of the character are treated as the
+    * same character, and are represented as a lowercase character in the occurrence list.
+    *
+    * Note: you must use `groupBy` to implement this method!
+    */
+  def wordOccurrences(w: Word): Occurrences = (w groupBy (c => c.toLower) mapValues (_.length)).toList.sorted
+
+  /** Converts a sentence into its character occurrence list. */
+  def sentenceOccurrences(s: Sentence): Occurrences = ???
 
   /** Returns all the anagrams of a given word. */
   def wordAnagrams(word: Word): List[Word] = ???
